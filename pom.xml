@@ -4,16 +4,14 @@
   <parent>
     <groupId>tech.simter</groupId>
     <artifactId>simter-parent</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
+    <relativePath></relativePath>
   </parent>
   <artifactId>simter-http</artifactId>
-  <version>0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-
   <name>simter-http</name>
   <description>OkHttp3+RxJava2</description>
   <url>https://github.com/simter/simter-http</url>
-
   <licenses>
     <license>
       <name>MIT</name>
@@ -21,11 +19,9 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-
   <scm>
     <url>https://github.com/simter/simter-http.git</url>
   </scm>
-
   <organization>
     <name>simter</name>
     <url>https://github.com/simter</url>
@@ -40,7 +36,6 @@
     <system>GitHub</system>
     <url>https://github.com/simter/simter-http/issues</url>
   </issueManagement>
-
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
