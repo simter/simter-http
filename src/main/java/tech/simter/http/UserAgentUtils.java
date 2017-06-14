@@ -75,7 +75,11 @@ public class UserAgentUtils {
 
   /**
    * Get a UserAgent by key
-   * <p>If key not exists, return a default UserAgent</p>
+   * <p>
+   * If key not exists, return a default UserAgent
+   *
+   * @param key the key
+   * @return the UserAgent string
    */
   public static String get(String key) {
     return agents.containsKey(key) ? agents.get(key) : agents.get("default");
@@ -83,7 +87,10 @@ public class UserAgentUtils {
 
   /**
    * Get a Default UserAgent
-   * <p>equals to get("default")</p>
+   * <p>
+   * equals to get("default")
+   *
+   * @return the default UserAgent string
    */
   public static String get() {
     return agents.get("default");
@@ -91,6 +98,8 @@ public class UserAgentUtils {
 
   /**
    * All available keys
+   *
+   * @return the UserAgent keys
    */
   public static Set<String> keys() {
     return agents.keySet();
@@ -98,6 +107,9 @@ public class UserAgentUtils {
 
   /**
    * Add a UserAgent
+   *
+   * @param key       the key
+   * @param userAgent the userAgent
    */
   public static void add(String key, String userAgent) {
     agents.put(key, userAgent);

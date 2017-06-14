@@ -35,6 +35,8 @@ public final class OkHttpUtils {
    * <li>'simter.proxy.enable' = 'true' : return a new proxy through 'simter.proxy.hostname' and 'simter.proxy.port' config, default to 127.0.0.1:8888</li>
    * <li>'simter.proxy.enable' = 'false' or no 'simter.proxy.enable' config : no proxy use, return null</li>
    * </ul>
+   *
+   * @return the proxy
    */
   public static Proxy getEnvProxy() {
     // Whether to enable the proxy
@@ -81,6 +83,8 @@ public final class OkHttpUtils {
    * <li>1) proxy config through system environment</li>
    * <li>2) connectTimeout = 20s, readTimeout = 30s, writeTimeout = 20s</li>
    * </ul>
+   *
+   * @return the client instance
    */
   public static OkHttpClient newClient() {
     return newClientBuilder().build();
@@ -93,6 +97,8 @@ public final class OkHttpUtils {
    * <li>1) proxy config through system environment</li>
    * <li>2) connectTimeout = 20s, readTimeout = 60s, writeTimeout = 20s</li>
    * </ul>
+   *
+   * @return the builder instance
    */
   public static OkHttpClient.Builder newClientBuilder() {
     OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -118,6 +124,8 @@ public final class OkHttpUtils {
    * <ul>
    * <li>Header: User-Agent = ${UserAgentUtils.get()}</li>
    * </ul>
+   *
+   * @return the builder instance
    */
   public static Request.Builder newRequestBuilder() {
     return new Request.Builder().addHeader("User-Agent", UserAgentUtils.get());
