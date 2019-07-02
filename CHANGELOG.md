@@ -1,4 +1,11 @@
-# [simter-http](https://github.com/simter/simter-http) changelog
+# simter-http changelog
+
+## 1.1.0 - 2019-07-02
+
+No code changed, just polishing maven config and unit test.
+
+- Use JUnit5|AssertJ instead of JUnit4|Hamcrest
+- Change parent to simter-dependencies-1.2.0
 
 ## 1.0.0 - 2019-01-08
 
