@@ -1,99 +1,66 @@
 package tech.simter.http;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * @author RJ 2017-03-29
+ * @author RJ
  */
-public class UserAgentUtilsTest {
+class UserAgentUtilsTest {
   @Test
-  public void defaultUA() throws InterruptedException {
-    assertThat(UserAgentUtils.get(), is(UserAgentUtils.get("default")));
-    assertThat(UserAgentUtils.get(), is(UserAgentUtils.get("not-exists")));
-    assertThat(UserAgentUtils.get("xp-ie"), is(UserAgentUtils.get("xp-ie6")));
+  void defaultUA() {
+    assertEquals(UserAgentUtils.get("default"), UserAgentUtils.get());
+    assertEquals(UserAgentUtils.get("not-exists"), UserAgentUtils.get());
+    assertEquals(UserAgentUtils.get("xp-ie6"), UserAgentUtils.get("xp-ie"));
   }
 
   @Test
-  public void win10UA() throws InterruptedException {
-    assertThat(UserAgentUtils.get("win10-ie"), is(UserAgentUtils.get("win10-ie11")));
-    assertThat(UserAgentUtils.get("win10-ie11"), allOf(
-      containsString("Windows NT 10.0"),
-      containsString("rv:11.0")
-    ));
+  void win10UA() {
+    assertEquals(UserAgentUtils.get("win10-ie11"), UserAgentUtils.get("win10-ie"));
+    assertThat(UserAgentUtils.get("win10-ie11")).contains("Windows NT 10.0", "rv:11.0");
 
-    assertThat(UserAgentUtils.get("win10-chrome"), is(UserAgentUtils.get("win10-chrome46")));
-    assertThat(UserAgentUtils.get("win10-chrome46"), allOf(
-      containsString("Windows NT 10.0"),
-      containsString("Chrome/46")
-    ));
+    assertEquals(UserAgentUtils.get("win10-chrome46"), UserAgentUtils.get("win10-chrome"));
+    assertThat(UserAgentUtils.get("win10-chrome46")).contains("Windows NT 10.0", "Chrome/46");
 
-    assertThat(UserAgentUtils.get("win10-firefox"), is(UserAgentUtils.get("win10-firefox52")));
-    assertThat(UserAgentUtils.get("win10-firefox52"), allOf(
-      containsString("Windows NT 10.0"),
-      containsString("Firefox/52")
-    ));
+    assertEquals(UserAgentUtils.get("win10-firefox52"), UserAgentUtils.get("win10-firefox"));
+    assertThat(UserAgentUtils.get("win10-firefox52")).contains("Windows NT 10.0", "Firefox/52");
   }
 
   @Test
-  public void win7UA() throws InterruptedException {
-    assertThat(UserAgentUtils.get("win7-ie"), is(UserAgentUtils.get("win7-ie9")));
-    assertThat(UserAgentUtils.get("win7-ie9"), allOf(
-      containsString("Windows NT 6.1"),
-      containsString("MSIE 9.0")
-    ));
+  void win7UA() {
+    assertEquals(UserAgentUtils.get("win7-ie9"), UserAgentUtils.get("win7-ie"));
+    assertThat(UserAgentUtils.get("win7-ie9")).contains("Windows NT 6.1", "MSIE 9.0");
 
-    assertThat(UserAgentUtils.get("win7-chrome"), is(UserAgentUtils.get("win7-chrome46")));
-    assertThat(UserAgentUtils.get("win7-chrome46"), allOf(
-      containsString("Windows NT 6.1"),
-      containsString("Chrome/46")
-    ));
+    assertEquals(UserAgentUtils.get("win7-chrome46"), UserAgentUtils.get("win7-chrome"));
+    assertThat(UserAgentUtils.get("win7-chrome46")).contains("Windows NT 6.1", "Chrome/46");
 
-    assertThat(UserAgentUtils.get("win7-firefox"), is(UserAgentUtils.get("win7-firefox45")));
-    assertThat(UserAgentUtils.get("win7-firefox45"), allOf(
-      containsString("Windows NT 6.1"),
-      containsString("Firefox/45")
-    ));
+    assertEquals(UserAgentUtils.get("win7-firefox45"), UserAgentUtils.get("win7-firefox"));
+    assertThat(UserAgentUtils.get("win7-firefox45")).contains("Windows NT 6.1", "Firefox/45");
   }
 
   @Test
-  public void xpUA() throws InterruptedException {
-    assertThat(UserAgentUtils.get("xp-chrome"), is(UserAgentUtils.get("xp-chrome46")));
-    assertThat(UserAgentUtils.get("xp-chrome46"), allOf(
-      containsString("Windows NT 5.1"),
-      containsString("Chrome/46")
-    ));
+  void xpUA() {
+    assertEquals(UserAgentUtils.get("xp-chrome46"), UserAgentUtils.get("xp-chrome"));
+    assertThat(UserAgentUtils.get("xp-chrome46")).contains("Windows NT 5.1", "Chrome/46");
 
-    assertThat(UserAgentUtils.get("xp-ie"), is(UserAgentUtils.get("xp-ie6")));
-    assertThat(UserAgentUtils.get("xp-ie6"), allOf(
-      containsString("Windows NT 5.1"),
-      containsString("MSIE 6.0")
-    ));
+    assertEquals(UserAgentUtils.get("xp-ie6"), UserAgentUtils.get("xp-ie"));
+    assertThat(UserAgentUtils.get("xp-ie6")).contains("Windows NT 5.1", "MSIE 6.0");
 
-    assertThat(UserAgentUtils.get("xp-firefox"), is(UserAgentUtils.get("xp-firefox52")));
-    assertThat(UserAgentUtils.get("xp-firefox52"), allOf(
-      containsString("Windows NT 5.1"),
-      containsString("Firefox/52")
-    ));
+    assertEquals(UserAgentUtils.get("xp-firefox52"), UserAgentUtils.get("xp-firefox"));
+    assertThat(UserAgentUtils.get("xp-firefox52")).contains("Windows NT 5.1", "Firefox/52");
   }
 
   @Test
-  public void androidUA() throws InterruptedException {
-    assertThat(UserAgentUtils.get("android-chrome"), is(UserAgentUtils.get("android-chrome44")));
-    assertThat(UserAgentUtils.get("android-chrome44"), allOf(
-      containsString("Android"),
-      containsString("Chrome/44")
-    ));
+  void androidUA() {
+    assertEquals(UserAgentUtils.get("android-chrome44"), UserAgentUtils.get("android-chrome"));
+    assertThat(UserAgentUtils.get("android-chrome44")).contains("Android", "Chrome/44");
   }
 
   @Test
-  public void iphoneUA() throws InterruptedException {
-    assertThat(UserAgentUtils.get("iphone-safari"), is(UserAgentUtils.get("iphone-safari10")));
-    assertThat(UserAgentUtils.get("iphone-safari10"), allOf(
-      containsString("iPhone OS"),
-      containsString("Version/10")
-    ));
+  void iphoneUA() {
+    assertEquals(UserAgentUtils.get("iphone-safari10"), UserAgentUtils.get("iphone-safari"));
+    assertThat(UserAgentUtils.get("iphone-safari10")).contains("iPhone OS", "Version/10");
   }
 }

@@ -1,20 +1,19 @@
 package tech.simter.http;
 
 import okhttp3.OkHttpClient;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * @author RJ 2017-03-29
+ * @author RJ
  */
-public class OkHttpUtilsTest {
+class OkHttpUtilsTest {
   @Test
-  public void timeout() {
+  void timeout() {
     OkHttpClient client = OkHttpUtils.newClient();
-    assertThat(client.connectTimeoutMillis(), is(20000));
-    assertThat(client.readTimeoutMillis(), is(60000));
-    assertThat(client.writeTimeoutMillis(), is(20000));
+    assertEquals(20000, client.connectTimeoutMillis());
+    assertEquals(60000, client.readTimeoutMillis());
+    assertEquals(20000, client.writeTimeoutMillis());
   }
 }
